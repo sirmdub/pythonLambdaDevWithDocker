@@ -1,0 +1,6 @@
+FROM python:2-alpine
+
+RUN pip install awscli
+COPY --from=pldwd:build /usr/src/app/pythonLambdaDevWithDocker.zip /
+
+CMD aws lambda update-function-code --function-name pythonLambdaDevWithDocker --zip-file fileb://pythonLambdaDevWithDocker.zip 
